@@ -132,16 +132,16 @@ class BinarySearchTree {
     }
 }
 
-const bst = new BinarySearchTree();
-bst.insert(10);
-bst.insert(5);
-bst.insert(15);
-bst.insert(3);
-bst.insert(7);
+const binary = new BinarySearchTree();
+binary.insert(10);
+binary.insert(5);
+binary.insert(15);
+binary.insert(3);
+binary.insert(7);
 
-console.log("In-Order Traversal:", bst.inOrderTraversal()); 
-console.log("Search 7:", bst.search(7)); 
-console.log("Search 20:", bst.search(20)); 
+console.log("In-Order Traversal:", binary.inOrderTraversal()); 
+console.log("Search 7:", binary.search(7)); 
+console.log("Search 20:", binary.search(20)); 
 
 
 
