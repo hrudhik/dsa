@@ -212,7 +212,7 @@ class MinHeap {
         return sortedArray
     }
 }
-
+    
 // Usage
 const minHeap = new MinHeap();
 minHeap.insert(10);
@@ -328,7 +328,7 @@ class Graph{
             }
             startwith(prifix){
                 let node=this.root
-                for(let char of word){
+                for(let char of prifix){
                     if(!node.child[char])return false
                     node=node.child[char]
                 }
