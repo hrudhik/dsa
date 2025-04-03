@@ -229,7 +229,7 @@ class BinarySearchTree {
         if (node) {
             result.push(node.value);
             this.preOrderTraversal(node.left, result);
-            this.preOrderTraversal(node.right, result);
+            this.preOrderTraversal(node.right, result); 
         }
         return result;
     }
@@ -562,3 +562,5 @@ function findKthLargest(nums, k) {
 }
 
 console.log(findKthLargest([3, 2, 1, 5, 6, 4], 2)); 
+
+
