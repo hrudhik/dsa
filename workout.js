@@ -440,6 +440,20 @@ class Trie {
         }
         return true;
     }
+    findLongest(){
+        let prefix=""
+        let node=this.root
+        while(true){
+            let key =(Object.keys(node.children))
+            if(key.length===1 && !node.isEnd){
+                prefix+=key[0]
+                node=node.children[key[0]]
+            }else{
+                break
+            }
+        }
+        return prefix
+    }
 }
 
 
@@ -450,6 +464,8 @@ console.log(trie.search("app"));
 console.log(trie.startsWith("app")); 
 trie.insert("app");
 console.log(trie.search("app")); 
+console.log(Trie.findLongest())
+
 
 
 
