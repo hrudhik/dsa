@@ -192,3 +192,23 @@
     console.log("Breadth-First Search (BFS) from A:", graph.BFS('A'))
     console.log("Breadth-First Search (BFS) from A:", graph.DFS('A'))
     console.log("ShortesPath",graph.ShortesPath('A',"C"))
+
+
+    //clone graph leet code
+    var cloneGraph = function(node) {
+        if(!node)return null
+        let visited=new Map();
+         function dfs(curr){
+            if(visited.has(curr)){
+                return visited.get(curr)
+            }
+            let clone=new Node(curr.val);
+            visited.set(curr,clone)
+    
+            for(let neigbor of curr.neighbors){
+                clone.neighbors.push(dfs(neigbor))
+            }
+            return clone
+         }
+         return dfs(node)
+    };

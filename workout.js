@@ -32,7 +32,7 @@
 //     }
 //     insert(word){
 //         let node=this.root;
-        
+
 //         for(let char of word){
 //             if(!node.children[char]){
 //                 node.children[char]=new Node()
@@ -139,9 +139,9 @@ binary.insert(15);
 binary.insert(3);
 binary.insert(7);
 
-console.log("In-Order Traversal:", binary.inOrderTraversal()); 
-console.log("Search 7:", binary.search(7)); 
-console.log("Search 20:", binary.search(20)); 
+console.log("In-Order Traversal:", binary.inOrderTraversal());
+console.log("Search 7:", binary.search(7));
+console.log("Search 20:", binary.search(20));
 
 
 
@@ -229,7 +229,7 @@ class BinarySearchTree {
         if (node) {
             result.push(node.value);
             this.preOrderTraversal(node.left, result);
-            this.preOrderTraversal(node.right, result); 
+            this.preOrderTraversal(node.right, result);
         }
         return result;
     }
@@ -263,6 +263,22 @@ class BinarySearchTree {
         if (node.value <= min || node.value >= max) return false;
         return this.isBST(node.left, min, node.value) && this.isBST(node.right, node.value, max);
     }
+    kthlargest(k) {
+        let node = this.root
+        let arr = []
+        function Inorder(node) {
+            if (node) {
+                Inorder(node.left)
+                arr.push(node.value)
+                Inorder(node.right)
+            }
+        }
+        Inorder(node)
+        if (k > arr.length) return "cannot find this position element can you try any other position "
+        return arr[arr.length - k]
+    }
+
+
 }
 
 // Example Usage
@@ -275,17 +291,17 @@ bst.insert(7);
 bst.insert(13);
 bst.insert(18);
 
-console.log("In-Order Traversal:", bst.inOrderTraversal()); 
-console.log("Pre-Order Traversal:", bst.preOrderTraversal()); 
-console.log("Post-Order Traversal:", bst.postOrderTraversal()); 
+console.log("In-Order Traversal:", bst.inOrderTraversal());
+console.log("Pre-Order Traversal:", bst.preOrderTraversal());
+console.log("Post-Order Traversal:", bst.postOrderTraversal());
 console.log("Contains 7:", bst.contains(7));
-console.log("Contains 20:", bst.contains(20)); 
+console.log("Contains 20:", bst.contains(20));
 bst.delete(10);
-console.log("In-Order After Deletion:", bst.inOrderTraversal()); 
+console.log("In-Order After Deletion:", bst.inOrderTraversal());
 
 console.log("Closest Value to 12:", bst.findClosestValue(12));
 
-console.log("Is Valid BST:", bst.isBST()); 
+console.log("Is Valid BST:", bst.isBST());
 
 
 
@@ -353,9 +369,9 @@ heap.insert(10);
 heap.insert(5);
 heap.insert(20);
 heap.insert(2);
-console.log("Min Heap:", heap.display()); 
-console.log("Removed Min:", heap.remove()); 
-console.log("Min Heap after remove:", heap.display()); 
+console.log("Min Heap:", heap.display());
+console.log("Removed Min:", heap.remove());
+console.log("Min Heap after remove:", heap.display());
 
 
 
@@ -379,15 +395,15 @@ function heapify(arr, n, i) {
 function heapSort(arr) {
     let n = arr.length;
 
-   
-    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) { 
         heapify(arr, n, i);
     }
 
-    
+
     for (let i = n - 1; i > 0; i--) {
-        [arr[0], arr[i]] = [arr[i], arr[0]]; 
-        heapify(arr, i, 0);   
+        [arr[0], arr[i]] = [arr[i], arr[0]];
+        heapify(arr, i, 0);
     }
 
     return arr;
@@ -440,15 +456,15 @@ class Trie {
         }
         return true;
     }
-    findLongest(){
-        let prefix=""
-        let node=this.root
-        while(true){
-            let key =(Object.keys(node.children))
-            if(key.length===1 && !node.isEnd){
-                prefix+=key[0]
-                node=node.children[key[0]]
-            }else{
+    findLongest() {
+        let prefix = ""
+        let node = this.root
+        while (true) {
+            let key = (Object.keys(node.children))
+            if (key.length === 1 && !node.isEnd) {
+                prefix += key[0]
+                node = node.children[key[0]]
+            } else {
                 break
             }
         }
@@ -459,11 +475,11 @@ class Trie {
 
 const trie = new Trie();
 trie.insert("apple");
-console.log(trie.search("apple")); 
+console.log(trie.search("apple"));
 console.log(trie.search("app"));
-console.log(trie.startsWith("app")); 
+console.log(trie.startsWith("app"));
 trie.insert("app");
-console.log(trie.search("app")); 
+console.log(trie.search("app"));
 console.log(Trie.findLongest())
 
 
@@ -519,7 +535,7 @@ class Graph {
 
     addEdge(vertex1, vertex2) {
         this.adjacencyList[vertex1].push(vertex2);
-        this.adjacencyList[vertex2].push(vertex1); 
+        this.adjacencyList[vertex2].push(vertex1);
     }
 
 
@@ -568,15 +584,15 @@ graph.addEdge("B", "D");
 graph.addEdge("C", "D");
 
 console.log("BFS:", graph.bfs("A"));
-console.log("DFS:", graph.dfs("A")); 
+console.log("DFS:", graph.dfs("A"));
 
 
 
 function findKthLargest(nums, k) {
-    nums.sort((a, b) => b - a); 
+    nums.sort((a, b) => b - a);
     return nums[k - 1];
 }
 
-console.log(findKthLargest([3, 2, 1, 5, 6, 4], 2)); 
+console.log(findKthLargest([3, 2, 1, 5, 6, 4], 2));
 
 
